@@ -1,0 +1,80 @@
+2025-05-06T10:12:45.416+05:30  INFO 32420 --- [sales-automation] [restartedMain] com.cts.crm.SalesAutomationApplication   : Starting SalesAutomationApplication using Java 21.0.6 with PID 32420 (C:\Users\2400534\git\crm\sales-automation\target\classes started by 2400534 in C:\Users\2400534\git\crm\sales-automation)
+2025-05-06T10:12:45.418+05:30  INFO 32420 --- [sales-automation] [restartedMain] com.cts.crm.SalesAutomationApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-05-06T10:12:45.479+05:30  INFO 32420 --- [sales-automation] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-05-06T10:12:45.480+05:30  INFO 32420 --- [sales-automation] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-05-06T10:12:46.313+05:30  INFO 32420 --- [sales-automation] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-06T10:12:46.380+05:30  INFO 32420 --- [sales-automation] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 55 ms. Found 1 JPA repository interface.
+2025-05-06T10:12:46.870+05:30  INFO 32420 --- [sales-automation] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8083 (http)
+2025-05-06T10:12:46.884+05:30  INFO 32420 --- [sales-automation] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-06T10:12:46.885+05:30  INFO 32420 --- [sales-automation] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-06T10:12:46.941+05:30  INFO 32420 --- [sales-automation] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-06T10:12:46.942+05:30  INFO 32420 --- [sales-automation] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1460 ms
+2025-05-06T10:12:47.084+05:30  INFO 32420 --- [sales-automation] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-06T10:12:47.130+05:30  INFO 32420 --- [sales-automation] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.13.Final
+2025-05-06T10:12:47.158+05:30  INFO 32420 --- [sales-automation] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-06T10:12:47.444+05:30  INFO 32420 --- [sales-automation] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-06T10:12:47.472+05:30  INFO 32420 --- [sales-automation] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-06T10:12:48.549+05:30  INFO 32420 --- [sales-automation] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5fc64dcc
+2025-05-06T10:12:48.552+05:30  INFO 32420 --- [sales-automation] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-06T10:12:48.679+05:30  WARN 32420 --- [sales-automation] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-05-06T10:12:48.725+05:30  INFO 32420 --- [sales-automation] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.41
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-06T10:12:49.779+05:30  INFO 32420 --- [sales-automation] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-06T10:12:49.962+05:30  INFO 32420 --- [sales-automation] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-06T10:12:50.577+05:30  WARN 32420 --- [sales-automation] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-05-06T10:12:51.249+05:30  INFO 32420 --- [sales-automation] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-05-06T10:12:51.324+05:30  INFO 32420 --- [sales-automation] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8083 (http) with context path '/'
+2025-05-06T10:12:51.333+05:30  INFO 32420 --- [sales-automation] [restartedMain] com.cts.crm.SalesAutomationApplication   : Started SalesAutomationApplication in 6.516 seconds (process running for 7.896)
+2025-05-06T10:16:10.249+05:30  INFO 32420 --- [sales-automation] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-05-06T10:16:10.259+05:30  INFO 32420 --- [sales-automation] [Thread-5] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-06T10:16:10.269+05:30  INFO 32420 --- [sales-automation] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-05-06T10:16:10.276+05:30  INFO 32420 --- [sales-automation] [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-06T10:16:10.281+05:30  INFO 32420 --- [sales-automation] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-06T10:16:10.297+05:30  INFO 32420 --- [sales-automation] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-06T10:16:10.415+05:30  INFO 32420 --- [sales-automation] [restartedMain] com.cts.crm.SalesAutomationApplication   : Starting SalesAutomationApplication using Java 21.0.6 with PID 32420 (C:\Users\2400534\git\crm\sales-automation\target\classes started by 2400534 in C:\Users\2400534\git\crm\sales-automation)
+2025-05-06T10:16:10.416+05:30  INFO 32420 --- [sales-automation] [restartedMain] com.cts.crm.SalesAutomationApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-05-06T10:16:10.634+05:30  INFO 32420 --- [sales-automation] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-06T10:16:10.649+05:30  INFO 32420 --- [sales-automation] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 1 JPA repository interface.
+2025-05-06T10:16:10.730+05:30  INFO 32420 --- [sales-automation] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8084 (http)
+2025-05-06T10:16:10.731+05:30  INFO 32420 --- [sales-automation] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-06T10:16:10.731+05:30  INFO 32420 --- [sales-automation] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-06T10:16:10.764+05:30  INFO 32420 --- [sales-automation] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-06T10:16:10.764+05:30  INFO 32420 --- [sales-automation] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 345 ms
+2025-05-06T10:16:10.808+05:30  INFO 32420 --- [sales-automation] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-06T10:16:10.813+05:30  INFO 32420 --- [sales-automation] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-06T10:16:10.828+05:30  INFO 32420 --- [sales-automation] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-06T10:16:10.829+05:30  INFO 32420 --- [sales-automation] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-05-06T10:16:10.845+05:30  INFO 32420 --- [sales-automation] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@60b9b08b
+2025-05-06T10:16:10.846+05:30  INFO 32420 --- [sales-automation] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-05-06T10:16:10.850+05:30  WARN 32420 --- [sales-automation] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-05-06T10:16:10.851+05:30  INFO 32420 --- [sales-automation] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 8.0.41
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-06T10:16:10.916+05:30  INFO 32420 --- [sales-automation] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-06T10:16:10.934+05:30  INFO 32420 --- [sales-automation] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-06T10:16:11.016+05:30  WARN 32420 --- [sales-automation] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-05-06T10:16:11.121+05:30  INFO 32420 --- [sales-automation] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-05-06T10:16:11.131+05:30  INFO 32420 --- [sales-automation] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8084 (http) with context path '/'
+2025-05-06T10:16:11.134+05:30  INFO 32420 --- [sales-automation] [restartedMain] com.cts.crm.SalesAutomationApplication   : Started SalesAutomationApplication in 0.765 seconds (process running for 207.698)
+2025-05-06T10:16:11.136+05:30  INFO 32420 --- [sales-automation] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-05-06T10:19:15.500+05:30  INFO 32420 --- [sales-automation] [http-nio-8084-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-06T10:19:15.500+05:30  INFO 32420 --- [sales-automation] [http-nio-8084-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-05-06T10:19:15.501+05:30  INFO 32420 --- [sales-automation] [http-nio-8084-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-05-06T10:19:15.697+05:30  WARN 32420 --- [sales-automation] [http-nio-8084-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource api/sales/leads.]
+2025-05-06T10:27:28.885+05:30  INFO 32420 --- [sales-automation] [RMI TCP Connection(31)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2025-05-06T10:27:28.888+05:30  INFO 32420 --- [sales-automation] [RMI TCP Connection(31)-127.0.0.1] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-06T10:27:28.898+05:30  INFO 32420 --- [sales-automation] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-05-06T10:27:28.901+05:30  INFO 32420 --- [sales-automation] [RMI TCP Connection(31)-127.0.0.1] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-06T10:27:28.902+05:30  INFO 32420 --- [sales-automation] [RMI TCP Connection(31)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-05-06T10:27:28.910+05:30  INFO 32420 --- [sales-automation] [RMI TCP Connection(31)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.

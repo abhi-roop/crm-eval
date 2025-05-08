@@ -2,11 +2,16 @@ package com.cts.crm.service;
 
 import com.cts.crm.model.Customer;
 import java.util.List;
+import java.util.Optional;
 
 public interface CustomerService {
     List<Customer> getAllCustomers();
-    Customer getCustomerById(Long id);
+    Optional<Customer> getCustomerById(Long id);
     Customer createCustomer(Customer customer);
     Customer updateCustomer(Long id, Customer customer);
-    String deleteCustomer(Long id); // Changed return type to String
+    void deleteCustomer(Long id);
+    void logInteraction(Long customerId, String interactionDetails); // Placeholder for interaction logging
+    List<Customer> getCustomersByRegion(String region);
+    List<Customer> getCustomersByInterest(String interest);
+    List<Customer> getCustomersByPurchasingHabit(String habit);
 }

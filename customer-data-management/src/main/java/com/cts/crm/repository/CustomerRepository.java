@@ -4,8 +4,11 @@ import com.cts.crm.model.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
-    // You can add custom query methods here if needed
-    // For example: List<Customer> findByLastName(String lastName);
+    List<Customer> findByRegion(String region);
+    List<Customer> findByInterestsContainingIgnoreCase(String interest);
+    List<Customer> findByPurchasingHabitsContainingIgnoreCase(String habit);
 }

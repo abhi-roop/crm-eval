@@ -1,47 +1,67 @@
 package com.cts.crm.controller;
 
+import com.cts.crm.exception.CustomerNotFoundException;
 import com.cts.crm.model.Customer;
 import com.cts.crm.service.CustomerService;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/customers")
 public class CustomerController {
 
-    @Autowired
-    private CustomerService customerService;
+	private final CustomerService customerService;
 
-    @GetMapping
-    public ResponseEntity<List<Customer>> getAllCustomers() {
-        return new ResponseEntity<>(customerService.getAllCustomers(), HttpStatus.OK);
-    }
+	@Autowired
+	public CustomerController(CustomerService customerService) {
+		this.customerService = customerService;
+	}
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Customer> getCustomerById(@PathVariable Long id) {
-        return new ResponseEntity<>(customerService.getCustomerById(id), HttpStatus.OK);
-    }
+	@GetMapping
+	public List<Customer> getAllCustomers() {
+		return customerService.getAllCustomers();
+	}
 
-    @PostMapping
-    public ResponseEntity<Customer> createCustomer(@Valid @RequestBody Customer customer) {
-        Customer createdCustomer = customerService.createCustomer(customer);
-        return new ResponseEntity<>(createdCustomer, HttpStatus.CREATED);
-    }
+	@GetMapping("/{id}")
+	public Customer getCustomerById(@PathVariable Long id) {
+		return customerService.getCustomerById(id)
+				.orElseThrow(() -> new CustomerNotFoundException("Customer with ID " + id + " not found"));
+	}
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @Valid @RequestBody Customer customer) {
-        Customer updatedCustomer = customerService.updateCustomer(id, customer);
-        return new ResponseEntity<>(updatedCustomer, HttpStatus.OK);
-    }
+	@PostMapping
+	public Customer createCustomer(@RequestBody Customer customer) {
+		return customerService.createCustomer(customer);
+	}
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteCustomer(@PathVariable Long id) { // Changed return type to ResponseEntity<String>
-        String message = customerService.deleteCustomer(id);
-        return new ResponseEntity<>(message, HttpStatus.OK); // Return the message with 200 OK
-    }
+	@PutMapping("/{id}")
+	public Customer updateCustomer(@PathVariable Long id, @RequestBody Customer updatedCustomer) {
+		updatedCustomer.setCustomerId(id); // Ensure ID is set
+		return customerService.updateCustomer(id, updatedCustomer);
+	}
+
+	@DeleteMapping("/{id}")
+	public void deleteCustomer(@PathVariable Long id) {
+		customerService.deleteCustomer(id);
+	}
+
+
+
+
+	@GetMapping("/region/{region}")
+	public List<Customer> getCustomersByRegion(@PathVariable String region) {
+		return customerService.getCustomersByRegion(region);
+	}
+
+	@GetMapping("/interest")
+	public List<Customer> getCustomersByInterest(@RequestParam String interest) {
+		return customerService.getCustomersByInterest(interest);
+	}
+
+	@GetMapping("/habit")
+	public List<Customer> getCustomersByPurchasingHabit(@RequestParam String habit) {
+		return customerService.getCustomersByPurchasingHabit(habit);
+	}
 }
