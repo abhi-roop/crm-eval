@@ -11,12 +11,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SalesAutomation {
-	private Long opportunityId;
-	 private String salesStage;
-	 private BigDecimal estimatedValue;
-	 private LocalDateTime closingDate;
-	 private LocalDateTime creationDate;
-	 private LocalDateTime lastUpdatedDate;
-	
-
+    private Long opportunityId;
+    private String salesStage;
+    private BigDecimal estimatedValue;
+    private LocalDateTime closingDate;
+    private LocalDateTime creationDate;
+    private LocalDateTime lastUpdatedDate;
 }

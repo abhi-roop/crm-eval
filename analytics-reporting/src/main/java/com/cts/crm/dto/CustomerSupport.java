@@ -10,13 +10,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CustomerSupport {
-	private Long ticketId;
-	private String issueDescription;
-	private String assignedAgent;
-	private String status;
-	private String subject;
-	private String description;
-	private LocalDateTime creationDate;
-	private LocalDateTime lastUpdatedDate;
-
+    private Long ticketId;
+    private String issueDescription;
+    private String assignedAgent;
+    private String status;
+    private String subject;
+    private String description;
+    private LocalDateTime creationDate;
+    private LocalDateTime lastUpdatedDate;
 }

@@ -19,6 +19,7 @@ public class Campaign {
 
     @Column(nullable = false)
     private String name;
+		
 
     private LocalDateTime startDate;
     private LocalDateTime endDate;

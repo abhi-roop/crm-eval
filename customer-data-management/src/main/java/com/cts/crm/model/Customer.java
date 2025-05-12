@@ -1,11 +1,24 @@
 package com.cts.crm.model;
 
-import jakarta.persistence.*;
+import java.util.List;
+import java.util.Map;
+
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.MapKeyColumn;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
-import java.util.Map;
 
 @Entity
 @Table(name = "customers")
@@ -16,13 +29,24 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long customerId; // Renamed 'id' to 'customerId' for clarity
+    private Long customerId; // Unique identifier
 
+    @NotBlank(message = "Name cannot be empty")
     @Column(nullable = false)
     private String name;
 
+    @Email(message = "Invalid email format")
+    @NotBlank(message = "Email is required")
+    @Column(nullable = false, unique = true)
     private String email;
+
+    @Size(min = 10, message = "Phone number must be at least 10 digits")
+    @NotBlank(message = "Phone number is required")
+    @Column(nullable = false)
     private String phone;
+
+    @NotBlank(message = "Address is required")
+    @Column(nullable = false)
     private String address; 
 
     @ElementCollection
@@ -39,6 +63,4 @@ public class Customer {
     private String region;
     private String interests;
     private String purchasingHabits;
-
-    // Lombok will generate the no-args and all-args constructors
 }

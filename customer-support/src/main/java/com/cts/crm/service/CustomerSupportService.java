@@ -24,5 +24,6 @@ public interface CustomerSupportService {
 
 	Tickets updateTicketStatus(Long ticketId, String status);
 
+	String deleteAllTicketsByCustomerId(Long customerId);
 
 }

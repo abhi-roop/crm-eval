@@ -1,15 +1,25 @@
 package com.cts.crm.controller;
 
-import com.cts.crm.model.Campaign;
-import com.cts.crm.service.CampaignService; // Assuming CampaignService is in com.cts.crm.service
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 import java.util.List;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.cts.crm.exception.CampaignNotFoundException;
+import com.cts.crm.exception.InvalidDateFormatException;
+import com.cts.crm.model.Campaign;
+import com.cts.crm.service.CampaignService;
 
 @RestController
 @RequestMapping("/api/marketing/campaigns")
@@ -17,7 +27,7 @@ public class MarketingAutomationController {
 
     private final CampaignService campaignService;
 
-    @Autowired
+   // @Autowired
     public MarketingAutomationController(CampaignService campaignService) {
         this.campaignService = campaignService;
     }
@@ -30,7 +40,7 @@ public class MarketingAutomationController {
     @GetMapping("/{id}")
     public Campaign getCampaignById(@PathVariable Long id) {
         return campaignService.getCampaignById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Campaign with ID " + id + " not found"));
+                .orElseThrow(() -> new CampaignNotFoundException("Campaign with ID " + id + " not found"));
     }
 
     @PostMapping
@@ -42,7 +52,7 @@ public class MarketingAutomationController {
     @PutMapping("/{id}")
     public Campaign updateCampaign(@PathVariable Long id, @RequestBody Campaign updatedCampaign) {
         return campaignService.updateCampaign(id, updatedCampaign)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Campaign with ID " + id + " not found"));
+                .orElseThrow(() -> new CampaignNotFoundException("Campaign with ID " + id + " not found"));
     }
 
     @DeleteMapping("/{id}")
@@ -62,7 +72,7 @@ public class MarketingAutomationController {
             LocalDateTime parsedStartDate = LocalDateTime.parse(startDate);
             return campaignService.getCampaignsStartingAfter(parsedStartDate);
         } catch (DateTimeParseException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid date format for startDate");
+            throw new InvalidDateFormatException("Invalid date format for startDate");
         }
     }
 
@@ -72,7 +82,7 @@ public class MarketingAutomationController {
             LocalDateTime parsedEndDate = LocalDateTime.parse(endDate);
             return campaignService.getCampaignsEndingBefore(parsedEndDate);
         } catch (DateTimeParseException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid date format for endDate");
+            throw new InvalidDateFormatException("Invalid date format for endDate");
         }
     }
 
@@ -83,29 +93,7 @@ public class MarketingAutomationController {
             LocalDateTime parsedEndDate = LocalDateTime.parse(endDate);
             return campaignService.getCampaignsWithinDateRange(parsedStartDate, parsedEndDate);
         } catch (DateTimeParseException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid date format for startDate or endDate");
-        }
-    }
-
-    @GetMapping("/end-within")
-    public List<Campaign> getCampaignsEndingWithinDateRange(@RequestParam String startDate, @RequestParam String endDate) {
-        try {
-            LocalDateTime parsedStartDate = LocalDateTime.parse(startDate);
-            LocalDateTime parsedEndDate = LocalDateTime.parse(endDate);
-            return campaignService.getCampaignsEndingWithinDateRange(parsedStartDate, parsedEndDate);
-        } catch (DateTimeParseException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid date format for startDate or endDate");
-        }
-    }
-
-    @GetMapping("/start-after-end-before")
-    public List<Campaign> getCampaignsStartingAfterAndEndingBefore(@RequestParam String startDate, @RequestParam String endDate) {
-        try {
-            LocalDateTime parsedStartDate = LocalDateTime.parse(startDate);
-            LocalDateTime parsedEndDate = LocalDateTime.parse(endDate);
-            return campaignService.getCampaignsStartingAfterAndEndingBefore(parsedStartDate, parsedEndDate);
-        } catch (DateTimeParseException e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid date format for startDate or endDate");
+            throw new InvalidDateFormatException("Invalid date format for startDate or endDate");
         }
     }
 }

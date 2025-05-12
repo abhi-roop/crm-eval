@@ -1,57 +1,66 @@
 package com.cts.crm.controller;
 
-import com.cts.crm.model.Report;
-import com.cts.crm.service.ReportService;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
-
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.cts.crm.dto.CustomerData;
+import com.cts.crm.dto.CustomerTicketResponse;
+import com.cts.crm.dto.MarketingAutomation;
+import com.cts.crm.dto.SalesAutomation;
+import com.cts.crm.model.Report;
+import com.cts.crm.service.ReportService;
 
 @RestController
 @RequestMapping("/api/analytics/reports")
 public class ReportController {
 
-	private final ReportService reportService;
-	private final ObjectMapper objectMapper;
+    private final ReportService reportService;
 
-	@Autowired
-	public ReportController(ReportService reportService, ObjectMapper objectMapper) {
-		this.reportService = reportService;
-		this.objectMapper = objectMapper;
-	}
+    public ReportController(ReportService reportService) {
+        this.reportService = reportService;
+    }
 
-	@GetMapping
-	public List<Report> getAllReports() {
-		return reportService.getAllReports();
-	}
+    @GetMapping
+    public CustomerTicketResponse getAllReports() {
+        return reportService.getAllReports();
+    }
 
-	@GetMapping("/type/{reportType}")
-	public List<Report> getReportsByType(@PathVariable String reportType) {
-		return reportService.getReportsByType(reportType);
-	}
+    @GetMapping("/getAllCustomer")
+    public List<CustomerData> getAllCustomers() {
+        return reportService.getAllCustomers();
+    }
 
-	@GetMapping("/generated-between")
-	public List<Report> getReportsGeneratedBetween(@RequestParam String startDate, @RequestParam String endDate) {
-		LocalDateTime parsedStartDate = LocalDateTime.parse(startDate);
-		LocalDateTime parsedEndDate = LocalDateTime.parse(endDate);
-		return reportService.getReportsGeneratedBetween(parsedStartDate, parsedEndDate);
-	}
+    @GetMapping("/getAllCampaigns")
+    public List<MarketingAutomation> getAllCampaigns() {
+        return reportService.getAllCampaigns();
+    }
 
-	@GetMapping("/generated-before")
-	public List<Report> getReportsGeneratedBefore(@RequestParam String date) {
-		LocalDateTime parsedDate = LocalDateTime.parse(date);
-		return reportService.getReportsGeneratedBefore(parsedDate);
-	}
+    @GetMapping("/getAllSales")
+    public List<SalesAutomation> getAllSales() {
+        return reportService.getAllSales();
+    }
 
-	@GetMapping("/generated-after")
-	public List<Report> getReportsGeneratedAfter(@RequestParam String date) {
-		LocalDateTime parsedDate = LocalDateTime.parse(date);
-		return reportService.getReportsGeneratedAfter(parsedDate);
-	}
+    @GetMapping("/generated-between")
+    public List<Report> getReportsGeneratedBetween(@RequestParam String startDate, @RequestParam String endDate) {
+        LocalDateTime parsedStartDate = LocalDateTime.parse(startDate);
+        LocalDateTime parsedEndDate = LocalDateTime.parse(endDate);
+        return reportService.getReportsGeneratedBetween(parsedStartDate, parsedEndDate);
+    }
 
+    @GetMapping("/generated-before")
+    public List<Report> getReportsGeneratedBefore(@RequestParam String date) {
+        LocalDateTime parsedDate = LocalDateTime.parse(date);
+        return reportService.getReportsGeneratedBefore(parsedDate);
+    }
+
+    @GetMapping("/generated-after")
+    public List<Report> getReportsGeneratedAfter(@RequestParam String date) {
+        LocalDateTime parsedDate = LocalDateTime.parse(date);
+        return reportService.getReportsGeneratedAfter(parsedDate);
+    }
 }

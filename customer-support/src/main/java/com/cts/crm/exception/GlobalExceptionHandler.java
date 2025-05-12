@@ -1,37 +1,85 @@
 package com.cts.crm.exception;
-
+ 
 import java.time.LocalDateTime;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.context.request.WebRequest;
+import java.util.Date;
 
+import java.util.HashMap;
+
+import java.util.Map;
+ 
+import org.springframework.http.HttpStatus;
+
+import org.springframework.http.ResponseEntity;
+
+import org.springframework.validation.FieldError;
+
+import org.springframework.web.bind.MethodArgumentNotValidException;
+
+import org.springframework.web.bind.annotation.ControllerAdvice;
+
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+import org.springframework.web.context.request.WebRequest;
+ 
 @ControllerAdvice
+
 public class GlobalExceptionHandler {
 
-	@ExceptionHandler(ResourceNotFoundException.class)
-	public ResponseEntity<ErrorDetails> handleResourceNotFoundException(ResourceNotFoundException ex,
-			WebRequest request) {
-		ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(), ex.getMessage(),
-				request.getDescription(false));
-		return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
+	@ExceptionHandler(value = MethodArgumentNotValidException.class)
+
+	public ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex) {
+ 
+		Map<String, Object> body = new HashMap<>();
+
+		body.put("timestamp", new Date());
+
+		// Get all errors
+
+		ex.getBindingResult().getAllErrors().forEach(error -> {
+
+			body.put(((FieldError) error).getField(), error.getDefaultMessage());
+
+		});
+
+		return new ResponseEntity<Object>(body, HttpStatus.BAD_REQUEST);
+ 
+	}
+ 
+	@ExceptionHandler(value = TicketNotFoundException.class)
+
+	public ResponseEntity<ExceptionResponse> handleAdminRegistrationException(TicketNotFoundException exception,
+
+			WebRequest webRequest) {
+ 
+		ExceptionResponse exceptionResponse = new ExceptionResponse();
+
+		exceptionResponse.setStatus(404);
+
+		exceptionResponse.setTime(LocalDateTime.now());
+
+		exceptionResponse.setMessage(exception.getMessage());
+ 
+		return new ResponseEntity<ExceptionResponse>(exceptionResponse, HttpStatus.NOT_ACCEPTABLE);
+ 
+	}
+ 
+	@ExceptionHandler(value = Exception.class)
+
+	public ResponseEntity<ExceptionResponse> handleAccountIdException(Exception exception, WebRequest webRequest) {
+ 
+		ExceptionResponse exceptionResponse = new ExceptionResponse();
+
+		exceptionResponse.setStatus(404);
+
+		exceptionResponse.setTime(LocalDateTime.now());
+
+		exceptionResponse.setMessage(exception.getMessage());
+ 
+		return new ResponseEntity<ExceptionResponse>(exceptionResponse, HttpStatus.NOT_ACCEPTABLE);
+ 
 	}
 
-	@ExceptionHandler(InvalidInputException.class)
-	public ResponseEntity<ErrorDetails> handleInvalidInputException(InvalidInputException ex, WebRequest request) {
-		ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(), ex.getMessage(),
-				request.getDescription(false));
-		return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
-	}
-
-	@ExceptionHandler(Exception.class)
-	public ResponseEntity<ErrorDetails> handleGlobalException(Exception ex, WebRequest request) {
-		ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(), "An unexpected error occurred",
-				request.getDescription(false));
-		// Log the exception for debugging purposes
-		ex.printStackTrace();
-		return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
-	}
 }
+
+ 

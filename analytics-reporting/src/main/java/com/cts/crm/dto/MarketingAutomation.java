@@ -10,9 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MarketingAutomation {
-	private Long campaignId;
-	private String name;
-	private LocalDateTime startDate;
-	private LocalDateTime endDate;
-
+    private Long campaignId;
+    private String name;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
 }

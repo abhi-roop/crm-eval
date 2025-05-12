@@ -1,7 +1,9 @@
 package com.cts.crm.exception;
 
 public class TicketNotFoundException extends RuntimeException {
-	public TicketNotFoundException(String message) {
-		super(message);
-	}
+    private static final long serialVersionUID = 1L;  // Add this!
+
+    public TicketNotFoundException(String message) {
+        super(message);
+    }
 }

@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface CustomerSupportRepository extends JpaRepository<Tickets, Long> {
 	List<Tickets> findByCustomerId(Long customerId);
-
-	List<Tickets> findByStatus(String status);
+    List<Tickets> findByStatus(String status);
+    void deleteByCustomerId(Long customerId);
 }

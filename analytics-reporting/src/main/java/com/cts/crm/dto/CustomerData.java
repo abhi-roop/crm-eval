@@ -11,14 +11,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CustomerData {
-	private Long customerId;
-	private String name;
-	private String email;
-	private String phone;
-	private String address;
-	private List<String> purchaseHistory;
-	private Map<String, String> segmentationData;
-	private String region;
-	private String interests;
-	private String purchasingHabits;
+    private Long customerId;
+    private String name;
+    private String email;
+    private String phone;
+    private String address;
+    private List<String> purchaseHistory;
+    private Map<String, String> segmentationData;
+    private String region;
+    private String interests;
+    private String purchasingHabits;
 }

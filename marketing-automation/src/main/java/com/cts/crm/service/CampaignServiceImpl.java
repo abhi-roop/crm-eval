@@ -1,20 +1,20 @@
 package com.cts.crm.service;
 
-import com.cts.crm.model.Campaign;
-import com.cts.crm.repository.MarketingAutomationRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import com.cts.crm.model.Campaign;
+import com.cts.crm.repository.MarketingAutomationRepository;
 
 @Service
 public class CampaignServiceImpl implements CampaignService {
 
     private final MarketingAutomationRepository campaignRepository;
 
-    @Autowired
+  //  @Autowired
     public CampaignServiceImpl(MarketingAutomationRepository campaignRepository) {
         this.campaignRepository = campaignRepository;
     }

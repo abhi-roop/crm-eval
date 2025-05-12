@@ -1,27 +1,19 @@
 package com.cts.crm.exception;
 
-import java.time.LocalDateTime;
-
 public class ErrorDetails {
-    private LocalDateTime timestamp;
+    private String status;
     private String message;
-    private String details;
 
-    public ErrorDetails(LocalDateTime timestamp, String message, String details) {
-        this.timestamp = timestamp;
+    public ErrorDetails(String status, String message) {
+        this.status = status;
         this.message = message;
-        this.details = details;
     }
 
-    public LocalDateTime getTimestamp() {
-        return timestamp;
+    public String getStatus() {
+        return status;
     }
 
     public String getMessage() {
         return message;
-    }
-
-    public String getDetails() {
-        return details;
     }
 }

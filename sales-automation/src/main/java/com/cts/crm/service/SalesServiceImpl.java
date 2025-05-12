@@ -1,22 +1,22 @@
 package com.cts.crm.service;
 
-import com.cts.crm.exception.SalesNotFoundException;
-import com.cts.crm.model.Sales;
-import com.cts.crm.repository.SalesRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import com.cts.crm.exception.SalesNotFoundException;
+import com.cts.crm.model.Sales;
+import com.cts.crm.repository.SalesRepository;
 
 @Service
 public class SalesServiceImpl implements SalesService {
 
     private final SalesRepository salesRepository;
 
-    @Autowired
+ //   @Autowired
     public SalesServiceImpl(SalesRepository salesRepository) {
         this.salesRepository = salesRepository;
     }

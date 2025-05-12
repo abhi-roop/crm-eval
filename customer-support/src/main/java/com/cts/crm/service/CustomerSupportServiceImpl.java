@@ -2,7 +2,6 @@ package com.cts.crm.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +18,7 @@ public class CustomerSupportServiceImpl implements CustomerSupportService {
 
 	private final CustomerSupportRepository customerSupportRepository;
 
-	@Autowired
+	//@Autowired
 	public CustomerSupportServiceImpl(CustomerSupportRepository customerSupportRepository) {
 		this.customerSupportRepository = customerSupportRepository;
 	}
@@ -79,11 +78,13 @@ public class CustomerSupportServiceImpl implements CustomerSupportService {
 
 	@Override
 	public List<Tickets> getTicketsByCustomerId(Long customerId) {
+		customerClient.getCustomerById(customerId);
 		return customerSupportRepository.findByCustomerId(customerId);
 	}
 
 	@Override
 	public List<Tickets> getTicketsByStatus(String status) {
+		
 		return customerSupportRepository.findByStatus(status);
 	}
 
@@ -103,5 +104,11 @@ public class CustomerSupportServiceImpl implements CustomerSupportService {
 			ticket.setLastUpdatedDate(LocalDateTime.now());
 			return customerSupportRepository.save(ticket);
 		}).orElseThrow(() -> new TicketNotFoundException("Ticket with ID " + ticketId + " not found"));
+	}
+
+	@Override
+	public String deleteAllTicketsByCustomerId(Long customerId) {
+		customerSupportRepository.deleteByCustomerId(customerId);
+		return("All the tickets are deleted") ;
 	}
 }
