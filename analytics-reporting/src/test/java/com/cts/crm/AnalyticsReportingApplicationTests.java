@@ -8,6 +8,8 @@ class AnalyticsReportingApplicationTests {
 
 	@Test
 	void contextLoads() {
+		//Test done for service layeyer only 
+		//not the main
 	}
 
 }

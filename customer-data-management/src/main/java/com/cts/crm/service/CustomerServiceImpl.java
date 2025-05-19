@@ -42,7 +42,7 @@ public class CustomerServiceImpl implements CustomerService {
 			return savedCustomer;
 		} catch (Exception e) {
 			logger.error("Error creating customer: {}", e.getMessage(), e);
-			throw e; // Re-throw the exception so it's handled by Spring's exception handling
+			throw e; // handled by Spring's exception handling
 		}
 	}
 
@@ -61,13 +61,8 @@ public class CustomerServiceImpl implements CustomerService {
 		}
 		customerRepository.deleteById(id);
 		return ("Customer Id Deleted");
-		
-	}
 
-//    @Override
-//    public void logInteraction(Long customerId, String interactionDetails) {
-//        System.out.println("Interaction logged for Customer ID " + customerId + ": " + interactionDetails);
-//    }
+	}
 
 	@Override
 	public List<Customer> getCustomersByRegion(String region) {
@@ -83,4 +78,5 @@ public class CustomerServiceImpl implements CustomerService {
 	public List<Customer> getCustomersByPurchasingHabit(String habit) {
 		return customerRepository.findByPurchasingHabitsContainingIgnoreCase(habit);
 	}
+
 }

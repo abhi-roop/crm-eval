@@ -17,9 +17,9 @@ public interface ReportRepository extends JpaRepository<Report, Long> {
 
     List<Report> findByGeneratedDateAfter(LocalDateTime date);
 
-    // ✅ Find reports generated on a specific date
+    // Find reports generated on a specific date
     List<Report> findByGeneratedDate(LocalDateTime date);
 
-    // ✅ Find latest report (sorted by generated date)
+    // Find latest report (sorted by generated date)
     Report findTopByOrderByGeneratedDateDesc();
 }

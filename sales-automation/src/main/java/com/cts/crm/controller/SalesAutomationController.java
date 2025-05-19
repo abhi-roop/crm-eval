@@ -22,7 +22,7 @@ import com.cts.crm.model.Sales;
 import com.cts.crm.service.SalesService;
 
 @RestController
-@RequestMapping("/api/sales/opportunities") // Keep the API endpoint name consistent with the resource
+@RequestMapping("/api/sales/opportunities") // Keeping the API endpoint name consistent with the resource
 public class SalesAutomationController {
 
     private final SalesService salesService;

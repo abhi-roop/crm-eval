@@ -7,9 +7,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Data // Lombok annotation to generate getters and setters methods
+@NoArgsConstructor // Generates a no-argument constructor for easy instantiation
+@AllArgsConstructor // Generates a constructor with all fields as parameters
 public class SalesAutomation {
     private Long opportunityId;
     private String salesStage;
